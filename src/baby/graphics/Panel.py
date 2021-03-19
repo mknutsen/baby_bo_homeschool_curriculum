@@ -5,11 +5,11 @@ from pygame.sprite import Sprite
 
 
 class Panel(Sprite):
-    def __init__(self, x, y, width, height, color):
+    def __init__(self, x, y, width, height):
         Sprite.__init__(self)
         self.image = Surface((width, height))
         self.rect = self.image.get_rect(topleft=(x, y))
-        self.color = color
+        self.color = Color(0)
 
     def update(self):
         color = self.color.new_color()
@@ -24,11 +24,8 @@ class Color:
         self.g = 255 if movement < 0 else 0
         self.b = 255 if movement < 0 else 0
         self.movement = [movement, movement, movement]
-        print(movement, self.r, self.g, self.b)
-        # print(self.__dict__)
 
     def new_color(self):
-        # movement = (randint(-MOVEMENT, MOVEMENT), randint(-MOVEMENT, MOVEMENT), randint(-MOVEMENT, MOVEMENT))
         self.r = self.r + self.movement[0]
         self.g = self.g + self.movement[1]
         self.b = self.b + self.movement[2]
